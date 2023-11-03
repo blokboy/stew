@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Navbar() {
     return (
-        <div className="bg-white p-2">
+        <div className="flex justify-between items-center bg-black p-2">
             <Link href="/" >
                 <Image 
                     src='/purple-logo.png'
@@ -11,6 +12,7 @@ export default function Navbar() {
                     height={50}
                 />
             </Link>
+            <ConnectButton />
         </div>
     )
 }
