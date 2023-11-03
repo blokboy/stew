@@ -13,12 +13,13 @@ import {
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
   base,
+  mainnet
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, publicClient } = configureChains(
-  [base],
+  [mainnet, base],
   [
     alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
     publicProvider()
