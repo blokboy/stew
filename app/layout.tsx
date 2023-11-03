@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './ui/globals.css';
 import Navbar from './ui/navbar';
+import clsx from 'clsx';
 
 import '@rainbow-me/rainbowkit/styles.css';
 
@@ -48,7 +49,7 @@ export default function RootLayout({
   return (
     
         <html lang="en">
-          <body className={inter.className}>
+          <body className={clsx('bg-black', inter.className)}>
           <WagmiConfig config={wagmiConfig}>
             <RainbowKitProvider chains={chains}>
               {children}
