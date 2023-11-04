@@ -24,8 +24,23 @@ export default function Soundboard() {
         },
     ]
     return (
-        <div className="flex fixed justify-center bottom-0 rounded-lg border-2 border-red-900 w-full h-1/3">
+        <div className="flex flex-col fixed items-center bottom-0 rounded-lg border-2 border-red-900 w-full h-1/3">
             <h1 className="">Sounds</h1>
+            <div className="flex flew-row">
+            {
+                SOUNDS && SOUNDS.map((button) => {
+                    return (
+                        <Button
+                             key={button.name}
+                             className='flex w-12 m-1 md:w-1/6 h-[48px]' 
+                        >
+                            <PlayPauseIcon />
+                            <p className="hidden md:block">{button.name}</p>
+                        </Button>
+                    )
+                })   
+            }
+            </div>
         </div>           
     );
 }
