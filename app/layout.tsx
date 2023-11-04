@@ -10,6 +10,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
   RainbowKitProvider,
+  midnightTheme
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
@@ -49,9 +50,16 @@ export default function RootLayout({
   return (
     
         <html lang="en">
-          <body className={clsx('bg-black', inter.className)}>
+          <body className={clsx('bg-black-600', inter.className)}>
           <WagmiConfig config={wagmiConfig}>
-            <RainbowKitProvider chains={chains}>
+            <RainbowKitProvider 
+              theme={midnightTheme({
+                accentColor: '#7b3fe4', //set proper hex later
+                accentColorForeground: 'white',
+                borderRadius: 'medium',
+              })}
+              chains={chains}
+            >
               {children}
             </RainbowKitProvider>
           </WagmiConfig>

@@ -1,5 +1,6 @@
-import NavLinks from "@/ui/dashboard/nav-links"
+import NavButtons from "@/ui/dashboard/nav-buttons"
 import Search from "@/ui/dashboard/search"
+import Soundboard from "@/ui/dashboard/soundboard"
 
 export default function Page() {
     return (
@@ -8,9 +9,11 @@ export default function Page() {
         <Search placeholder="Search mine.fm..."/>
         </div>
         <div className="m-3">
-          <NavLinks />
+        <NavButtons />
         </div>
-        
+        <div className="flex justify-center ">
+        <Soundboard />
+        </div>
         
       </main>
       

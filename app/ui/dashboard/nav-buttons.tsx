@@ -8,27 +8,24 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+import { Button } from '../button';
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
-const links = [
+const buttons = [
   { 
     name: 'Country', 
-    href: '', 
     icon: MusicalNoteIcon 
   },
   {
     name: 'Hip Hop',
-    href: '',
     icon: AdjustmentsVerticalIcon,
   },
   { 
-    name: 'Pop', 
-    href: '', 
+    name: 'Pop',  
     icon: PlayPauseIcon 
   },
   { 
     name: 'Country', 
-    href: '', 
     icon: MusicalNoteIcon 
   },
   {
@@ -38,31 +35,22 @@ const links = [
   },
   { 
     name: 'Pop', 
-    href: '', 
     icon: PlayPauseIcon 
   }
 ];
 
-export default function NavLinks() {
-  const pathname = usePathname();
+export default function NavButtons() {
   return (
     <div className="flex flex-row justify-evenly w-full">
-      {links.map((link) => {
-        const LinkIcon = link.icon;
+      {buttons.map((button) => {
         return (
-          <Link
-            key={link.name}
-            href={link.href}
-            className={clsx(
-              'flex w-12 m-1 md:w-1/6 h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
-              {
-                'bg-sky-100 text-blue-600': pathname === link.href,
-              },
-            )}
+          <Button
+            key={button.name}
+            className='flex w-12 m-1 md:w-1/6 h-[48px]' 
           >
-            <LinkIcon className="w-6" />
-                <p className="hidden md:block">{link.name}</p>
-            </Link>
+            <PlayPauseIcon />
+            <p className="hidden md:block">{button.name}</p>
+          </Button>
         );
       })}
     </div>
