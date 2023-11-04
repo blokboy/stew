@@ -1,3 +1,4 @@
+import Mixer from "@/ui/dashboard/mixer"
 import NavButtons from "@/ui/dashboard/nav-buttons"
 import Search from "@/ui/dashboard/search"
 import Soundboard from "@/ui/dashboard/soundboard"
@@ -10,6 +11,9 @@ export default function Page() {
         </div>
         <div className="m-3">
         <NavButtons />
+        </div>
+        <div className="w-full h-full">
+          <Mixer />
         </div>
         <div className="flex justify-center ">
         <Soundboard />

@@ -19,6 +19,10 @@ import {
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import dynamic from "next/dynamic";
+
+import { DndContext } from '@dnd-kit/core';
+
 
 const { chains, publicClient } = configureChains(
   [mainnet, base],
@@ -40,6 +44,7 @@ const wagmiConfig = createConfig({
   publicClient
 })
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
@@ -60,7 +65,9 @@ export default function RootLayout({
               })}
               chains={chains}
             >
+            <DndContext>
               {children}
+            </DndContext>
             </RainbowKitProvider>
           </WagmiConfig>
           </body>

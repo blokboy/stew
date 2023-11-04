@@ -1,10 +1,21 @@
+'use client';
+
 import { Button } from "../button";
 
 import {
     PlayPauseIcon,
   } from '@heroicons/react/24/outline';
+import Sound from "./sound";
+import { useDraggable } from '@dnd-kit/core';
 
 export default function Soundboard() {
+    const {attributes, listeners, setNodeRef, transform} = useDraggable({
+        id: 'draggable',
+      });
+      const style = transform ? {
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+      } : undefined;
+
     const SOUNDS = [
         {
             "name": "Test Sound",
@@ -24,19 +35,19 @@ export default function Soundboard() {
         },
     ]
     return (
-        <div className="flex flex-col fixed items-center bottom-0 rounded-lg border-2 border-red-900 w-full h-1/3">
-            <h1 className="">Sounds</h1>
-            <div className="flex flew-row">
+        <div className="flex flex-col fixed items-center bottom-0 rounded-2xl border-2 border-purple-500 w-full h-1/3">
+            <h1 className="mb-4 mt-2">Sounds</h1>
+            <div className="flex flew-row flex-wrap justify-between p-2">
             {
                 SOUNDS && SOUNDS.map((button) => {
                     return (
-                        <Button
-                             key={button.name}
-                             className='flex w-12 m-1 md:w-1/6 h-[48px]' 
+                        <div
+                            ref={setNodeRef}
+                            style={style}
+                            {...listeners}
                         >
-                            <PlayPauseIcon />
-                            <p className="hidden md:block">{button.name}</p>
-                        </Button>
+                        <Sound btnName={button.sound_file} />
+                        </div>
                     )
                 })   
             }
