@@ -8,13 +8,17 @@ import {
 import Sound from "./sound";
 import { useDraggable } from '@dnd-kit/core';
 
+
 export default function Soundboard() {
     const {attributes, listeners, setNodeRef, transform} = useDraggable({
         id: 'draggable',
-      });
-      const style = transform ? {
+        data: {
+            type: 'STUDIO_EFFECT'
+        }
+    });
+    const style = transform ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      } : undefined;
+    } : undefined;
 
     const SOUNDS = [
         {
@@ -39,12 +43,14 @@ export default function Soundboard() {
             <h1 className="mb-4 mt-2">Sounds</h1>
             <div className="flex flew-row flex-wrap justify-between p-2">
             {
-                SOUNDS && SOUNDS.map((button) => {
+                SOUNDS.map((button) => {
                     return (
-                        <div
-                            ref={setNodeRef}
-                            style={style}
-                            {...listeners}
+                        <div 
+                            key={button.sound_file} 
+                            ref={setNodeRef} 
+                            style={style} 
+                            {...listeners} 
+                            {...attributes}
                         >
                         <Sound btnName={button.sound_file} />
                         </div>
