@@ -3,14 +3,12 @@ import { ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  ref: any;
 }
 
-export function Button({ children, className, ref, ...rest }: ButtonProps) {
+export function Button({ children, className, ...rest }: ButtonProps) {
   return (
     <button
       {...rest}
-      ref={ref}
       className={clsx(
         'flex h-10 items-center rounded-lg bg-purple-600 px-4 text-sm font-medium text-white transition-colors hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 active:bg-purple-200 aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
         className,

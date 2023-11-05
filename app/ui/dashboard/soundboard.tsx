@@ -6,33 +6,11 @@ import {
     PlayPauseIcon,
   } from '@heroicons/react/24/outline';
 import Sound from "./sound";
-import { useDraggable } from '@dnd-kit/core';
+
 
 
 export default function Soundboard() {
-    const {attributes, listeners, setNodeRef, transform} = useDraggable({
-        id: 'draggable',
-        data: {
-            type: 'STUDIO_EFFECT'
-        }
-    });
-    const style = transform ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-    } : undefined;
-
     const SOUNDS = [
-        {
-            "name": "Test Sound",
-            "sound_file": "sound_file.mp3"
-        },
-        {
-            "name": "Test Sound",
-            "sound_file": "sound_file.mp3"
-        },
-        {
-            "name": "Test Sound",
-            "sound_file": "sound_file.mp3"
-        },
         {
             "name": "Test Sound",
             "sound_file": "sound_file.mp3"
@@ -45,15 +23,7 @@ export default function Soundboard() {
             {
                 SOUNDS.map((button) => {
                     return (
-                        <div 
-                            key={button.sound_file} 
-                            ref={setNodeRef} 
-                            style={style} 
-                            {...listeners} 
-                            {...attributes}
-                        >
-                        <Sound btnName={button.sound_file} />
-                        </div>
+                        <Sound key={button.sound_file} btnName={button.sound_file} />
                     )
                 })   
             }
